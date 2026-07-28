@@ -21,12 +21,13 @@ load_dotenv()
 def main() -> None:
     args = _parse_args()
 
-    if not os.getenv("ANTHROPIC_API_KEY"):
-        sys.exit("Error: ANTHROPIC_API_KEY is not set. Copy .env.example to .env and fill it in.")
+    provider = os.getenv("LLM_PROVIDER", "ollama" if not os.getenv("ANTHROPIC_API_KEY") else "claude")
+    if provider == "claude" and not os.getenv("ANTHROPIC_API_KEY"):
+        sys.exit("Error: LLM_PROVIDER=claude requires ANTHROPIC_API_KEY to be set in .env")
 
     sources = args.sources or _auto_detect_sources()
     if not sources:
-        sys.exit("No trend sources available. Set at least ANTHROPIC_API_KEY and one source API key.")
+        sys.exit("No trend sources configured.")
 
     from src.agent import ContentRepurposerAgent
 

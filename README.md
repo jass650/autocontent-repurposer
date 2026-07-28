@@ -5,12 +5,17 @@ AI agent that pulls trending topics from social media platforms and generates re
 ## Quick Start
 
 ```bash
-cp .env.example .env          # fill in ANTHROPIC_API_KEY at minimum
+# 1. Install Python dependencies
 pip install -r requirements.txt
+
+# 2. Pull the default local model (no API key needed)
+ollama pull llama3.2
+
+# 3. Run
 python main.py                 # auto-detects sources from .env keys present
 ```
 
-Google Trends and Reddit work without any API keys. Other sources require the keys shown in `.env.example`.
+Google Trends and Reddit work without any API keys. The agent uses **Ollama by default** — no API key required. To switch to Claude, set `LLM_PROVIDER=claude` and `ANTHROPIC_API_KEY` in your `.env`.
 
 ## Usage
 

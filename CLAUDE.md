@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-`autocontent-repurposer` is a Python CLI agent that fetches trending topics from social media platforms and uses Claude to generate ready-to-post content in multiple formats (short-form posts, long-form articles, Twitter thread scripts).
+`autocontent-repurposer` is a Python CLI agent that fetches trending topics from social media platforms and generates ready-to-post content in multiple formats (short-form posts, long-form articles, Twitter thread scripts). It runs fully locally via **Ollama** (default, no API key) or optionally via the Claude API.
 
 **GitHub**: `jass650/autocontent-repurposer`  
 **Branch convention**: feature branches are prefixed with `claude/`
@@ -15,14 +15,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 # Install dependencies
 pip install -r requirements.txt
 
-# Run the agent (auto-detects sources from .env keys present)
+# Pull the default Ollama model (first-time setup, no API key needed)
+ollama pull llama3.2
+
+# Run the agent (Ollama by default; auto-detects trend sources from .env)
 python main.py
 
 # Run with explicit sources and options
 python main.py --sources google reddit --count 3 --output json
 ```
 
-Copy `.env.example` to `.env` — `ANTHROPIC_API_KEY` is required; all other keys are optional and unlock additional trend sources.
+Copy `.env.example` to `.env`. By default the agent uses **Ollama** (no API key required). Set `LLM_PROVIDER=claude` and `ANTHROPIC_API_KEY` to use Claude instead. All social media API keys are optional and unlock additional trend sources.
 
 ## Architecture
 
@@ -30,7 +33,7 @@ Copy `.env.example` to `.env` — `ANTHROPIC_API_KEY` is required; all other key
 main.py                   # CLI entry — arg parsing, output formatting
 src/
   agent.py                # ContentRepurposerAgent: orchestrates fetch → generate
-  generator.py            # Claude API call using tool_use for structured output
+  generator.py            # Dual-provider content generation (Ollama default, Claude optional)
   trends/
     base.py               # TrendingTopic dataclass shared by all sources
     google_trends.py      # pytrends — no API key needed
@@ -42,7 +45,11 @@ src/
 
 **Data flow**: `main.py` → `ContentRepurposerAgent.run()` → each enabled `trends/*.get_trending()` → deduplicated list → `generator.generate_content()` per topic → structured dict output.
 
-**Content generation** uses Claude's `tool_use` with `tool_choice={"type":"tool","name":"create_content"}` to guarantee a structured JSON response with `topic_summary`, `short_form` (twitter/instagram/facebook), `long_form` (title/body), and `thread` (posts array).
+**Content generation** (`src/generator.py`) supports two backends selected via `LLM_PROVIDER`:
+- **Ollama** (default): calls `ollama.chat()` with `format="json"` and a JSON schema embedded in the system prompt. Model defaults to `llama3.2`, overridable via `OLLAMA_MODEL`.
+- **Claude**: uses `tool_use` with `tool_choice={"type":"tool","name":"create_content"}` for server-enforced structured output. Requires `ANTHROPIC_API_KEY`.
+
+Both produce the same dict shape: `topic_summary`, `short_form` (twitter/instagram/facebook), `long_form` (title/body), `thread` (posts array).
 
 ## Adding a New Trend Source
 
