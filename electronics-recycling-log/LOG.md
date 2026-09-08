@@ -1,12 +1,25 @@
 # Electronics Recycling Project — Session Log
 
 A running log of salvaged/reclaimed electronics being reverse-engineered and
-repurposed. Each entry documents what a board is, what's known about it, and
-what's next.
+repurposed. Each entry documents what a board is, what's known about it,
+whether it's usable on the active build, and what's next.
+
+Every piece of scrap gets a verdict:
+- **On bench — active** — usable now, being worked on for the current
+  project, stays out of storage.
+- **Stored — see `INVENTORY.md`** — not usable right now; packaged and
+  put away under a labeled container, tracked in the inventory file so
+  it can be found again later.
+
+`INVENTORY.md` in this folder is the master list of storage containers,
+their labels, and their locations — check there for "what do we have"
+and "where is it."
 
 ---
 
 ## 2026-09-04 — 7" TFT LCD panel + driver/controller board
+
+**Status:** On bench — active teardown, not yet stored.
 
 **Setup:** panel and driver board sitting on an anti-static mat, driver
 board wired to a breadboard and a bench power supply/adapter module
