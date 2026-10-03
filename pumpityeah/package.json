@@ -1,0 +1,14 @@
+{
+  "name": "pumpityeah",
+  "version": "1.0.0",
+  "description": "PumpitYeah — the AI workspace. Block editor, nested pages, databases, and a real Claude-powered AI.",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

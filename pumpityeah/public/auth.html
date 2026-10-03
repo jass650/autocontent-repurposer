@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in – PumpitYeah</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/base.css">
+  <style>
+    body { background: #fff; color: #191918; min-height: 100dvh; display: flex; flex-direction: column; }
+    .top { height: 64px; display: flex; align-items: center; padding: 0 24px; }
+    .wrap { flex: 1; display: flex; justify-content: center; padding: 40px 16px 80px; }
+    .card { width: 100%; max-width: 340px; }
+    h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.03em; margin: 0; line-height: 1.2; }
+    .sub { color: rgba(55, 53, 47, 0.55); font-size: 22px; font-weight: 600; letter-spacing: -0.03em; margin: 0 0 28px; line-height: 1.2; }
+    .demo-btn { width: 100%; height: 40px; border-radius: 8px; border: 0; background: rgba(140, 92, 245, 0.1); color: #6741d9; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.15s; }
+    .demo-btn:hover { background: rgba(140, 92, 245, 0.17); }
+    .or { display: flex; align-items: center; gap: 12px; color: rgba(55, 53, 47, 0.4); font-size: 13px; margin: 20px 0; }
+    .or::before, .or::after { content: ''; flex: 1; height: 1px; background: rgba(55, 53, 47, 0.12); }
+    label { display: block; font-size: 12px; font-weight: 500; color: rgba(55, 53, 47, 0.65); margin: 0 0 4px; }
+    .field { margin-bottom: 14px; }
+    input { width: 100%; height: 38px; border-radius: 8px; border: 1px solid rgba(55, 53, 47, 0.16); background: #fff; padding: 0 10px; font-size: 15px; transition: border-color 0.15s, box-shadow 0.15s; }
+    input:focus { outline: none; border-color: #2383e2; box-shadow: 0 0 0 3px rgba(35, 131, 226, 0.2); }
+    input:user-invalid { border-color: #eb5757; }
+    .submit { width: 100%; height: 40px; margin-top: 4px; }
+    .err { background: #fdebec; color: #b42318; border-radius: 8px; padding: 10px 12px; font-size: 14px; margin-bottom: 14px; }
+    .switch { text-align: center; font-size: 14px; color: rgba(55, 53, 47, 0.65); margin-top: 22px; }
+    .switch a { color: #0075de; text-decoration: none; font-weight: 500; }
+    .switch a:hover { text-decoration: underline; }
+    .fine { font-size: 12px; color: rgba(55, 53, 47, 0.5); text-align: center; margin-top: 28px; line-height: 1.5; }
+    .hint { font-size: 12px; color: rgba(55, 53, 47, 0.5); margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <div class="top"><a href="/" class="logo"><img src="/favicon.svg" alt="">PumpitYeah</a></div>
+  <div class="wrap">
+    <div class="card">
+      <h1>Think it. Pump it.</h1>
+      <p class="sub" id="sub">Log in to your PumpitYeah account</p>
+
+      <button class="demo-btn" id="demoBtn" type="button">✨ Explore the demo workspace</button>
+      <div class="or">or</div>
+
+      <form id="form" novalidate>
+        <div class="err" id="err" role="alert" hidden></div>
+        <div class="field" id="nameField" hidden>
+          <label for="name">Your name</label>
+          <input id="name" name="name" autocomplete="name" placeholder="Ada Lovelace">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="Enter your email address..." required>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password..." required minlength="8">
+          <div class="hint" id="pwHint" hidden>At least 8 characters.</div>
+        </div>
+        <button class="btn btn-primary submit" id="submit" type="submit">Continue</button>
+      </form>
+
+      <p class="switch" id="switch"></p>
+      <p class="fine">By continuing, you agree to the PumpitYeah Terms and Privacy Policy. This is a demo app — your data stays on this server.</p>
+    </div>
+  </div>
+  <script type="module">
+    import { api } from '/js/common.js';
+    const params = new URLSearchParams(location.search);
+    let mode = location.pathname === '/signup' ? 'signup' : 'login';
+    const $ = (id) => document.getElementById(id);
+    const next = params.get('next')?.startsWith('/app') ? params.get('next') : '/app';
+
+    function render() {
+      const signup = mode === 'signup';
+      document.title = (signup ? 'Sign up' : 'Log in') + ' – PumpitYeah';
+      $('sub').textContent = signup ? 'Create your PumpitYeah account' : 'Log in to your PumpitYeah account';
+      $('nameField').hidden = !signup;
+      $('pwHint').hidden = !signup;
+      $('password').autocomplete = signup ? 'new-password' : 'current-password';
+      $('switch').innerHTML = signup
+        ? 'Already have an account? <a href="/login">Log in</a>'
+        : 'New to PumpitYeah? <a href="/signup">Create an account</a>';
+      $('err').hidden = true;
+    }
+    $('switch').addEventListener('click', (e) => {
+      const a = e.target.closest('a'); if (!a) return;
+      e.preventDefault();
+      mode = a.getAttribute('href') === '/signup' ? 'signup' : 'login';
+      history.replaceState(null, '', a.getAttribute('href'));
+      render();
+    });
+
+    async function submit(body, endpoint) {
+      $('err').hidden = true;
+      $('submit').disabled = true; $('demoBtn').disabled = true;
+      $('submit').innerHTML = '<span class="spinner" style="border-top-color:#fff"></span>';
+      try {
+        await api(endpoint, { method: 'POST', body });
+        location.href = next;
+      } catch (e) {
+        $('err').textContent = e.message; $('err').hidden = false;
+        $('submit').disabled = false; $('demoBtn').disabled = false;
+        $('submit').textContent = 'Continue';
+      }
+    }
+    $('form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const body = { email: $('email').value.trim(), password: $('password').value };
+      if (mode === 'signup') {
+        body.name = $('name').value.trim();
+        if (!body.name) { $('err').textContent = 'Please tell us your name.'; $('err').hidden = false; $('name').focus(); return; }
+      }
+      if (!body.email || !body.password) { $('err').textContent = 'Enter your email and password.'; $('err').hidden = false; return; }
+      submit(body, '/' + mode);
+    });
+    const loginDemo = () => submit({ email: 'demo@pumpityeah.com', password: 'demo1234' }, '/login');
+    $('demoBtn').addEventListener('click', loginDemo);
+
+    render();
+    // Already logged in? Go straight to the app.
+    fetch('/api/me').then((r) => { if (r.ok && !params.has('demo')) location.href = next; });
+    if (params.has('demo')) loginDemo();
+    else (mode === 'signup' ? $('name') : $('email')).focus();
+  </script>
+</body>
+</html>

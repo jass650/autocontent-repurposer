@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PumpitYeah – The AI workspace that gets it done</title>
+  <meta name="description" content="PumpitYeah is the connected workspace where notes, docs, projects and a built-in AI teammate come together.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/landing.css">
+</head>
+<body>
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="logo"><img src="/favicon.svg" alt="">PumpitYeah</a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="#product">Product</a>
+        <a href="#ai">AI</a>
+        <a href="#templates">Templates</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="/login" class="btn btn-ghost btn-sm" data-auth="out">Log in</a>
+        <a href="/signup" class="btn btn-primary btn-sm" data-auth="out">Get PumpitYeah free</a>
+        <a href="/app" class="btn btn-primary btn-sm" data-auth="in" hidden>Open PumpitYeah</a>
+        <button class="nav-burger btn btn-ghost btn-sm" aria-label="Open menu" aria-expanded="false" id="burger">
+          <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3.5 6h13M3.5 10h13M3.5 14h13"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="nav-mobile" id="mobileNav" hidden>
+      <a href="#product">Product</a><a href="#ai">AI</a><a href="#templates">Templates</a><a href="#pricing">Pricing</a>
+      <a href="/login" data-auth="out">Log in</a>
+      <a href="/signup" class="btn btn-primary" data-auth="out">Get PumpitYeah free</a>
+      <a href="/app" class="btn btn-primary" data-auth="in" hidden>Open PumpitYeah</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="doodles" aria-hidden="true">
+        <svg class="doodle d1" viewBox="0 0 120 120" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="60" cy="48" r="26" fill="#fff"/><path d="M48 46h.1M72 46h.1"/><path d="M50 58c6 6 14 6 20 0"/><path d="M34 40c4-18 30-26 46-10 6 6 8 10 7 16" /><path d="M40 92c4-10 12-16 20-16s16 6 20 16"/><path d="M20 20l8 8M100 18l-8 9M60 6v10"/></svg>
+        <svg class="doodle d2" viewBox="0 0 120 120" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="22" y="24" width="76" height="70" rx="8" fill="#fff"/><path d="M36 44h48M36 58h34M36 72h40"/><path d="m86 86 18 18" /><circle cx="80" cy="80" r="12" fill="#ffe066"/></svg>
+        <svg class="doodle d3" viewBox="0 0 120 120" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M60 14c3 22 12 31 34 34-22 3-31 12-34 34-3-22-12-31-34-34 22-3 31-12 34-34Z" fill="#c9b8ff"/><path d="M96 78c1 9 5 13 14 14-9 1-13 5-14 14-1-9-5-13-14-14 9-1 13-5 14-14Z" fill="#fff"/></svg>
+        <svg class="doodle d4" viewBox="0 0 120 120" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 96 50 30l22 40 14-22 18 48Z" fill="#fff"/><circle cx="88" cy="26" r="10" fill="#ff8787"/><path d="M14 104h94"/></svg>
+      </div>
+      <h1>The AI workspace<br>that gets it done. <span class="yeah">Yeah.</span></h1>
+      <p class="hero-sub">Write, plan and organize in one place — with an AI teammate that knows your work and pumps out the busywork for you.</p>
+      <div class="hero-ctas">
+        <a href="/signup" class="btn btn-primary btn-lg" data-auth="out">Get PumpitYeah free</a>
+        <a href="/login?demo=1" class="btn btn-ghost btn-lg" data-auth="out">Try the live demo →</a>
+        <a href="/app" class="btn btn-primary btn-lg" data-auth="in" hidden>Open your workspace</a>
+      </div>
+
+      <!-- Product mock -->
+      <div class="mock" role="img" aria-label="PumpitYeah app preview showing a page being written by AI">
+        <div class="mock-bar"><span></span><span></span><span></span></div>
+        <div class="mock-body">
+          <aside class="mock-side">
+            <div class="mock-ws"><b>A</b> Acme Inc.</div>
+            <div class="mock-item">🔍 Search</div>
+            <div class="mock-item">🏠 Home</div>
+            <div class="mock-item ai">✨ PumpitYeah AI</div>
+            <div class="mock-label">Private</div>
+            <div class="mock-item active">🚀 Launch plan</div>
+            <div class="mock-item">🗓️ Meeting notes</div>
+            <div class="mock-item">📚 Team wiki</div>
+            <div class="mock-item">📖 Reading list</div>
+          </aside>
+          <div class="mock-page">
+            <div class="mock-cover"></div>
+            <div class="mock-icon">🚀</div>
+            <div class="mock-title">Launch plan</div>
+            <div class="mock-line"><span class="chk on"></span><s>Finalize pricing page</s></div>
+            <div class="mock-line"><span class="chk"></span>Ship onboarding v2</div>
+            <div class="mock-line"><span class="chk"></span>Record launch video</div>
+            <div class="mock-ai">
+              <div class="mock-ai-head">✨ <span id="mockPrompt"></span><span class="caret"></span></div>
+              <div class="mock-ai-out" id="mockOut"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOGOS -->
+    <section class="logos" aria-label="Teams using PumpitYeah">
+      <p>Loved by fast-moving teams everywhere</p>
+      <div class="logo-row">
+        <span>▲ Northwind</span><span>◆ Lumen Labs</span><span>● Halcyon</span><span>■ Brightpath</span><span>✦ Orbitly</span><span>⬢ Fieldnote</span>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="product">
+      <h2 class="section-title">One workspace. Every team.</h2>
+      <p class="section-sub">Docs, wikis, projects and AI — finally in the same place, connected the way your work actually is.</p>
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-tab="docs">📝 Docs</button>
+        <button role="tab" aria-selected="false" data-tab="wiki">📚 Wikis</button>
+        <button role="tab" aria-selected="false" data-tab="projects">🚀 Projects</button>
+        <button role="tab" aria-selected="false" data-tab="ai">✨ AI</button>
+      </div>
+      <div class="tab-panels">
+        <div class="tab-panel" data-panel="docs">
+          <div class="tp-copy">
+            <h3>Write anything. Beautifully.</h3>
+            <p>Every page is a canvas of blocks: text, to-dos, toggles, code, images and more. Type <kbd>/</kbd> to add anything, drag to rearrange, and never fight a formatting menu again.</p>
+            <ul><li>40+ markdown shortcuts</li><li>Nested pages, as deep as you like</li><li>Publish any page to the web in one click</li></ul>
+          </div>
+          <div class="tp-visual blocks-visual">
+            <div class="bv h">Q4 kickoff</div>
+            <div class="bv"><span class="chk on"></span>Draft goals</div>
+            <div class="bv"><span class="chk"></span>Review with team</div>
+            <div class="bv callout">💡 Type “/” for commands</div>
+            <div class="bv slash"><div>Text</div><div class="sel">Heading 1</div><div>To-do list</div><div>Toggle list</div></div>
+          </div>
+        </div>
+        <div class="tab-panel" data-panel="wiki" hidden>
+          <div class="tp-copy">
+            <h3>Centralize what your team knows.</h3>
+            <p>Turn scattered docs into a wiki people actually read. Organize pages in a tree, find anything instantly with <kbd>Ctrl</kbd> <kbd>K</kbd>, and let AI answer questions about it.</p>
+            <ul><li>Unlimited nested pages</li><li>Instant full-text search</li><li>Favorites for the pages you live in</li></ul>
+          </div>
+          <div class="tp-visual tree-visual">
+            <div>▾ 📚 Team Wiki</div><div class="in">▸ 🛠️ Engineering Handbook</div><div class="in">▸ 🌱 New Hire Onboarding</div><div class="in">▸ 🎨 Brand guidelines</div><div>▸ 🗓️ Meeting Notes</div><div>▸ 🚀 Q4 Launch Tracker</div>
+          </div>
+        </div>
+        <div class="tab-panel" data-panel="projects" hidden>
+          <div class="tp-copy">
+            <h3>Projects that run themselves.</h3>
+            <p>Databases with table and board views. Track status, owners, dates and tags — then open any row as a full page for specs and notes.</p>
+            <ul><li>Table &amp; board views</li><li>Drag cards between columns</li><li>Select, date, person, number &amp; checkbox properties</li></ul>
+          </div>
+          <div class="tp-visual board-visual">
+            <div class="col"><span class="tag c-gray">Not started</span><div class="card">Launch video</div><div class="card">Help center</div></div>
+            <div class="col"><span class="tag c-blue">In progress</span><div class="card">Pricing copy</div><div class="card">Onboarding v2</div></div>
+            <div class="col"><span class="tag c-green">Done</span><div class="card">Interviews</div></div>
+          </div>
+        </div>
+        <div class="tab-panel" data-panel="ai" hidden>
+          <div class="tp-copy">
+            <h3>An AI teammate that knows your work.</h3>
+            <p>Ask questions across your whole workspace, summarize meeting notes, pull out action items, or turn a messy draft into something you’re proud of.</p>
+            <ul><li>Powered by Claude</li><li>Answers cite the pages they came from</li><li>Works right inside the editor</li></ul>
+          </div>
+          <div class="tp-visual chat-visual">
+            <div class="bubble me">What’s blocking the launch?</div>
+            <div class="bubble ai">Two things, per <b>Weekly Sync — Product</b>: the sync engine load test is waiting on staging capacity, and pricing still needs final copy from Maya.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI -->
+    <section class="ai-section" id="ai">
+      <div class="ai-badge">✨ PumpitYeah AI</div>
+      <h2 class="section-title">Pump out your best work.</h2>
+      <p class="section-sub">Built into every page. Press <kbd>Space</kbd> on a new line, highlight text, or open AI chat from the sidebar.</p>
+      <div class="ai-grid">
+        <div class="ai-card"><div class="ai-emoji">🧠</div><h3>Ask your workspace</h3><p>“What did we decide about pricing?” Get answers from your own pages, with sources.</p></div>
+        <div class="ai-card"><div class="ai-emoji">✍️</div><h3>Write &amp; edit</h3><p>Continue writing, fix grammar, change tone, make it shorter — on any selection.</p></div>
+        <div class="ai-card"><div class="ai-emoji">✅</div><h3>Find action items</h3><p>Turn a meeting page into a checklist with owners and dates in one click.</p></div>
+        <div class="ai-card"><div class="ai-emoji">🌍</div><h3>Translate</h3><p>Translate a paragraph or an entire page into any language instantly.</p></div>
+      </div>
+    </section>
+
+    <!-- TEMPLATES -->
+    <section class="templates" id="templates">
+      <h2 class="section-title">Start with a template.</h2>
+      <p class="section-sub">Skip the blank page. Every template is fully editable.</p>
+      <div class="tpl-grid">
+        <a href="/signup" class="tpl"><span>🗓️</span><b>Meeting notes</b><small>Agenda, notes, action items</small></a>
+        <a href="/signup" class="tpl"><span>✅</span><b>Task tracker</b><small>Table database with status</small></a>
+        <a href="/signup" class="tpl"><span>📖</span><b>Reading list</b><small>Board view by status</small></a>
+        <a href="/signup" class="tpl"><span>📄</span><b>Product brief</b><small>Problem, goals, scope</small></a>
+        <a href="/signup" class="tpl"><span>📅</span><b>Weekly planner</b><small>Plan every day of the week</small></a>
+        <a href="/signup" class="tpl"><span>✈️</span><b>Travel planner</b><small>Itinerary &amp; packing list</small></a>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing">
+      <h2 class="section-title">Simple pricing. Start free.</h2>
+      <div class="price-grid">
+        <div class="price"><h3>Free</h3><div class="amt">$0</div><p>For individuals getting organized.</p><ul><li>Unlimited pages &amp; blocks</li><li>Databases</li><li>Publish to web</li><li>AI trial</li></ul><a href="/signup" class="btn btn-outline">Get started</a></div>
+        <div class="price"><h3>Plus</h3><div class="amt">$10<small>/seat/mo</small></div><p>For small teams moving fast.</p><ul><li>Everything in Free</li><li>Unlimited file uploads</li><li>Page history</li><li>Invite guests</li></ul><a href="/signup" class="btn btn-outline">Try Plus</a></div>
+        <div class="price featured"><div class="pop">Most popular</div><h3>Business</h3><div class="amt">$20<small>/seat/mo</small></div><p>For teams that want AI everywhere.</p><ul><li>Everything in Plus</li><li>PumpitYeah AI included</li><li>Workspace Q&amp;A</li><li>Advanced permissions</li></ul><a href="/signup" class="btn btn-primary">Get Business</a></div>
+        <div class="price"><h3>Enterprise</h3><div class="amt">Custom</div><p>Security and control at scale.</p><ul><li>Everything in Business</li><li>SAML SSO</li><li>Audit log</li><li>Dedicated success manager</li></ul><a href="/signup" class="btn btn-outline">Contact sales</a></div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <img src="/favicon.svg" alt="" width="64" height="64">
+      <h2>Get started for free.</h2>
+      <p>Play around with it first. Pay and add your team later.</p>
+      <div class="hero-ctas">
+        <a href="/signup" class="btn btn-primary btn-lg" data-auth="out">Get PumpitYeah free</a>
+        <a href="/login?demo=1" class="btn btn-ghost btn-lg" data-auth="out">Try the demo</a>
+        <a href="/app" class="btn btn-primary btn-lg" data-auth="in" hidden>Open your workspace</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <a href="/" class="logo"><img src="/favicon.svg" alt="">PumpitYeah</a>
+        <p class="muted">© 2026 PumpitYeah Labs</p>
+      </div>
+      <div class="fcol"><b>Product</b><a href="#product">Docs</a><a href="#product">Wikis</a><a href="#product">Projects</a><a href="#ai">AI</a></div>
+      <div class="fcol"><b>Resources</b><a href="#templates">Templates</a><a href="#pricing">Pricing</a><a href="/login?demo=1">Live demo</a></div>
+      <div class="fcol"><b>Account</b><a href="/login">Log in</a><a href="/signup">Sign up</a><a href="/app">Open app</a></div>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/landing.js"></script>
+</body>
+</html>
