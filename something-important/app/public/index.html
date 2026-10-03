@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TwoCents — everybody's selling something</title>
+  <meta name="description" content="Buy and sell stuff, services and billboard space. One account for everyone. We keep 3% + 2¢.">
+  <link rel="icon" href="/coin.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="top" id="top"></header>
+  <main id="view" class="view"></main>
+  <footer class="foot">
+    <div class="foot-in">
+      <div><a class="brand" href="/" data-link><span class="coin">2¢</span>TwoCents</a><p class="muted">Everybody's selling something. We keep 3% + 2¢.</p></div>
+      <div class="foot-links"><a href="/browse" data-link>Browse</a><a href="/browse?kind=billboard" data-link>Billboards</a><a href="/advertise" data-link>Advertise</a><a href="/jar" data-link>Penny Jar</a><a href="/sell" data-link>Sell</a></div>
+      <p class="muted small">Test mode — no real money moves. No illegal goods or services, weapons, drugs, stolen items or adult services.</p>
+    </div>
+  </footer>
+  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
