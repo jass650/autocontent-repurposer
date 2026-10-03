@@ -28,28 +28,40 @@ Later, more ways to earn: featured listings, a verified-seller badge, instant pa
 - **Integer cents everywhere.** Money is never a floating-point number.
 - **"We sell what others won't."** We're the home for niche, odd and overlooked markets. The only limit is the law: no illegal goods or services, no weapons, no drugs, nothing stolen, no adult services. That keeps the lights on and the payment processor happy.
 
-## Current status (work in progress)
-**Done in `app/`:**
-- `server.js`: the full backend API.
-  - Accounts and listings (stuff, services, billboards)
-  - Buying, hiring, and billboard week booking with conflict checks
-  - On-site ad slots (hero $5/day, side $1/day) and the seller dashboard
-  - Penny Jar stats, and the 3% + 2¢ fee in integer cents
-- `seed.js`: 8 sample sellers, 22 listings, past deals and ads.
-- `public/index.html`, `styles.css`, `coin.svg`: page shell and full styling.
-- Demo login: `demo@twocents.money` / `demo1234`. Start with `npm start` in `app/` (port 3100).
+## Current status: working MVP
+Run it:
 
-**Still to do:**
-- **Write `public/app.js`.** This is the single-page frontend. Its routes are:
-  - `/`: billboard hero, plus the stuff, services and billboards sections
-  - `/browse`
-  - `/l/:id`: buy box, billboard week picker
-  - `/sell`
-  - `/me`: dashboard
-  - `/advertise`: 14-day ad calendar
-  - `/jar`
-  - `/u/:id`
-  - `/login` and `/signup`
+```
+cd app
+npm start            # http://localhost:3100
+```
 
-  The CSS classes for all of these already exist in `styles.css`.
-- Payments are **simulated (test mode)**. After that, real payments: Stripe Connect for seller payouts.
+Demo login: `demo@twocents.money` / `demo1234`, or click "Use the demo account".
+
+**Screens:**
+- **Home:** live billboard hero, the stuff, services and billboards sections, sponsored spots, and a Penny Jar ticker.
+- **Browse:** filter by type and category, sort, search.
+- **Listing:** buy for stuff (with quantity), hire for services (with hours), and book billboards with a week picker that blocks booked weeks.
+- **Sell:** live preview and an "you keep $X, we keep Y¢" calculator.
+- **Dashboard:** earnings, fees, listings (edit, pause, promote, delete), sales (mark done), purchases, ads, and profile.
+- **Advertise:** a 14-day calendar for the hero board and side boards.
+- **Penny Jar:** total revenue, a 14-day chart, and a live feed.
+- **Also:** seller profiles, and log in / sign up.
+
+**Code:**
+- `server.js` is the API. All money is integer cents.
+- `seed.js` holds 8 sellers, 22 listings, and past deals and ads.
+- `public/` holds the frontend (`app.js`, `styles.css`).
+
+**Tests:**
+- `node test/smoke.mjs` runs the full buy, book, sell and advertise flow in headless Chrome. Add `WIDTH=390` to run it at phone width.
+- `node test/overflow.mjs` checks that every screen fits a phone.
+
+To start over with fresh sample data, delete `app/data/`.
+
+**Next:**
+- Real payments: Stripe Connect for seller payouts. Checkout is **simulated (test mode)** today.
+- Photo uploads.
+- Messaging between buyer and seller.
+- Reviews.
+- Featured-listing upsells.

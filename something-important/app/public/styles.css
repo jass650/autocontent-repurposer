@@ -301,6 +301,12 @@ dialog.modal::backdrop { background: rgba(13, 13, 12, 0.5); }
 .foot-links a { text-decoration: none; color: var(--ink-2); font-weight: 500; }
 .foot-in .small { grid-column: 1 / -1; }
 
+/* grid children may shrink below their content width (prevents sideways scroll on phones) */
+.hero > *, .lp > *, .sell > *, .adv > *, .jar-two > *, .browse > *, .filters > * { min-width: 0; }
+.ticker { max-width: 100%; }
+.two > *, .field { min-width: 0; }
+.field .input, .field select, .field textarea { width: 100%; min-width: 0; }
+
 /* responsive */
 @media (max-width: 960px) {
   .hero, .lp, .sell, .adv, .jar-two { grid-template-columns: 1fr; }
@@ -325,7 +331,7 @@ dialog.modal::backdrop { background: rgba(13, 13, 12, 0.5); }
   .kind { min-height: 130px; }
   .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .tile { font-size: 46px; }
-  .board-face { gap: 14px; padding: 16px 18px; min-height: 150px; }
+  .board-face { gap: 14px; padding: 38px 18px 16px; min-height: 150px; aspect-ratio: auto; }
   .board { padding-bottom: 46px; }
   .board-posts { height: 46px; }
   .kind-pick, .slots { grid-template-columns: 1fr; }
